@@ -52,10 +52,13 @@ process OCR{
 
     script:
     """
-   tesseract ${cropped_img} "${sample_id}_clean" --oem 3 -l eng --psm 6 -c page_separator='' -c edges_childarea=0.2 tessedit_char_whitelist="&" tessedit_char_blacklist="|\" 
+   tesseract ${cropped_img} "${sample_id}_clean" --oem 3 -l eng --dpi 72 --psm 6 -c page_separator='' -c edges_childarea=0.2
    
    # Process the output to create a label and write to label_file
-    cat "${sample_id}_clean.txt" | awk NF | sed -e 's/ /_/g' -e 's/[/]/_/g' -e 's/[.]/_/g' | tr '\n' '-' > !{label_file}
+    cat "${sample_id}_clean.txt" \
+    | awk NF \
+    | sed -e 's/ /_/g' -e 's/[/]/_/g' -e 's/[.]/_/g' \
+    | tr '\n' '-' > !{label_file}
 
     mv $cropped_img "`head -n 1 !{label_file}`.png"
     """
