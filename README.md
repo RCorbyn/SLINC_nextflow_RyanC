@@ -18,6 +18,7 @@ To use **SLINC**, clone this repository and ensure you have [Nextflow](https://w
 git clone https://github.com/mdrnao/SLINC.git
 cd SLINC
 # Additional installation steps if needed, e.g., dependencies or environment setup
+docker build --platform="linux/amd64" -t slinc_docker .
 ```
 
 ## Usage
