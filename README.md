@@ -64,7 +64,3 @@ Here’s an example command to run SLINC with a specified input directory:
 nextflow run main.nf --image_dir data/whole_slide_images
 ```
 
-
----
-
-Let me know if there’s anything else you’d like added or adjusted!
